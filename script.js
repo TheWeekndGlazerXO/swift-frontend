@@ -1,6 +1,5 @@
 import { supabase } from "./config.js";
 
-/* TEST AUTH */
 async function testAuth() {
   const { data, error } = await supabase.auth.signInWithPassword({
     email: "test@example.com",
@@ -12,4 +11,5 @@ async function testAuth() {
 }
 
 testAuth();
+
 
