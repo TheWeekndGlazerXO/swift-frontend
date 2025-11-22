@@ -1,18 +1,35 @@
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from "./config.js";
+import { supabase } from "./config.js";
 
-const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+/* LOGIN */
+window.login = async function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-async function testAuth() {
-  const { data, error } = await client.auth.signInWithPassword({
-    email: "test@example.com",
-    password: "password123"
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
   });
 
-  console.log("DATA:", data);
-  console.log("ERROR:", error);
-}
+  if (error) return alert(error.message);
 
-document.getElementById("login-btn").addEventListener("click", testAuth);
+  alert("Logged in!");
+  window.location.href = "index.html";
+};
+
+/* SIGNUP */
+window.signup = async function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  if (error) return alert(error.message);
+
+  alert("Account created — check your email!");
+};
 
 
 
