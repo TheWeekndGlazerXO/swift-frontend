@@ -1,18 +1,30 @@
-export let cart = JSON.parse(localStorage.getItem("swift_cart") || "[]");
+import { supabase } from "./config.js";
 
-export function saveCart() {
-  localStorage.setItem("swift_cart", JSON.stringify(cart));
-}
+export let cart = [];
 
 export function addToCart(product) {
-  // store only minimal data
-  const p = { id: product.id, name: product.name, price: product.price, image_url: product.image_url };
-  cart.push(p);
-  saveCart();
-  alert(`${product.name} added to cart`);
+  cart.push(product);
+  alert("Added to cart!");
 }
 
 export function clearCart() {
   cart = [];
-  saveCart();
 }
+
+window.checkout = async function () {
+  const { data: userData } = await supabase.auth.getUser();
+  const user = userData.user;
+
+  if (!user) return alert("Log in first!");
+
+  for (const item of cart) {
+    await supabase.from("orders").insert({
+      user_id: user.id,
+      product_id: item.id,
+      status: "pending",
+    });
+  }
+
+  clearCart();
+  alert("Order placed!");
+};

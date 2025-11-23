@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cart</title>
-  <script type="module" src="cart-page.js"></script>
+  <title>Your Cart</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script type="module" src="cart.js"></script>
 </head>
 <body>
   <h1>Your Cart</h1>
   <div id="cart-items"></div>
-  <div id="cart-actions" style="margin-top:12px;">
-    <button id="checkout-btn">Place Order</button>
-  </div>
+  <button onclick="checkout()">Checkout</button>
 </body>
 </html>

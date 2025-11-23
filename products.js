@@ -1,8 +1,7 @@
-import { supabase } from "./config.js";
+import { supabase, SUPABASE_URL } from "./config.js";
 
-/* LOAD PRODUCTS FROM DATABASE */
 async function loadProducts() {
-  const container = document.getElementById("product-list");
+  const container = document.getElementById("products");
 
   const { data: products, error } = await supabase
     .from("products")
@@ -16,13 +15,12 @@ async function loadProducts() {
   container.innerHTML = products
     .map(
       (p) => `
-      <div style="border:1px solid #ccc; padding:15px; margin:15px; width:300px;">
-        <h3>${p.name}</h3>
-        <img src="${p.image_url}" width="150" />
-        <p>${p.description}</p>
-        <strong>Price: $${p.price}</strong>
-      </div>
-    `
+        <div>
+          <h3>${p.name}</h3>
+          <p>${p.description}</p>
+          <strong>K${p.price}</strong>
+        </div>
+      `
     )
     .join("");
 }
