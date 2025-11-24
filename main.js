@@ -22,19 +22,29 @@ window.signup = async function () {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const { error } = await supabase.auth.signUp({
+  // 1. Create Supabase user
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
   });
 
   if (error) {
     alert(error.message);
-  } else {
-    alert("Account created! Check your email.");
+    return;
   }
-};
 
-import { addToCart } from "./cart.js";
+  // 2. Extract user ID
+  const user = data.user;
+
+  // 3. Create the profile row linked to the user
+  await supabase.from("profiles").upsert({
+    id: user.id,       // must match profiles.id
+    full_name: "",
+    role: "buyer",
+  });
+
+  alert("Account created! Check your email.");
+};
 
 /* LOAD PRODUCTS */
 async function loadProducts() {

@@ -1,30 +1,26 @@
 import { supabase } from "./config.js";
-
-export let cart = [];
-
-export function addToCart(product) {
-  cart.push(product);
-  alert("Added to cart!");
-}
-
-export function clearCart() {
-  cart = [];
-}
+import { cart, clearCart } from "./cart.js";
 
 window.checkout = async function () {
-  const { data: userData } = await supabase.auth.getUser();
-  const user = userData.user;
+  const user = (await supabase.auth.getUser()).data.user;
+  if (!user) return alert('Login first');
 
-  if (!user) return alert("Log in first!");
+  const total = cart.reduce((s,i)=> s + Number(i.price)*i.qty || 1, 0);
 
-  for (const item of cart) {
-    await supabase.from("orders").insert({
-      user_id: user.id,
-      product_id: item.id,
-      status: "pending",
-    });
-  }
+  const { data: order, error: ordErr } = await supabase.from('orders').insert({
+    user_id: user.id,
+    total,
+    shipping_address: { /* collect from form */ }
+  }).select().single();
 
+  if (ordErr) return alert(ordErr.message);
+
+  const items = cart.map(i => ({ order_id: order.id, product_id: i.id, quantity: i.qty || 1, price: i.price }));
+  const { error: itErr } = await supabase.from('order_items').insert(items);
+  if (itErr) return alert(itErr.message);
+
+  // notify seller(s) - simple SMS via Edge Function or Africa's Talking
   clearCart();
-  alert("Order placed!");
+  alert('Order placed');
+  window.location.href = 'orders.html';
 };
