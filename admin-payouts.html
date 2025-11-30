@@ -1,0 +1,10 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<h1>Payout Requests</h1>
+<table id="payout-table"></table>
+<script type="module" src="admin-payouts.js"></script>

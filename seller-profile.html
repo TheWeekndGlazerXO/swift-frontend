@@ -1,0 +1,38 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seller Profile</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script type="module" src="config.js"></script>
+    <script type="module" src="seller-profile.js"></script>
+</head>
+<body>
+    <h1>Seller Profile</h1>
+
+    <label>Store Name</label>
+    <input id="store_name" type="text" />
+
+    <label>Description</label>
+    <textarea id="store_description"></textarea>
+
+    <label>Brand / Seller Logo (URL)</label>
+    <input id="store_logo" type="text" placeholder="https://..." />
+
+    <button onclick="saveSellerProfile()">Save</button>
+
+</body>
+</html>

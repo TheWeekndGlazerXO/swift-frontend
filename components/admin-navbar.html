@@ -1,0 +1,15 @@
+<div id="navbar"></div>
+<script>
+  fetch("../components/admin-navbar.html")
+    .then(res => res.text())
+    .then(html => (document.getElementById("navbar").innerHTML = html));
+</script>
+
+<div class="sidebar">
+    <h2>SWIFT ADMIN</h2>
+    <a href="admin-dashboard.html">📊 Overview</a>
+    <a href="admin-sellers.html">🏪 Sellers</a>
+    <a href="admin-orders.html">🛒 Orders</a>
+    <a href="admin-search.html">🔍 Search Keywords</a>
+    <a href="admin-payouts.html">💵 Payout Requests</a>
+</div>

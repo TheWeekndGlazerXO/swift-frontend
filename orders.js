@@ -35,3 +35,28 @@ async function loadOrders() {
 }
 
 loadOrders();
+window.createOrder = async function (product_id, seller_id, amount) {
+    const quantity = 1;
+  
+    const user = (await supabase.auth.getUser()).data.user;
+  
+    const { data, error } = await supabase
+      .from("orders")
+      .insert({
+        buyer_id: user.id,
+        seller_id,
+        product_id,
+        quantity,
+        amount,
+        status: "pending"
+      })
+      .select()
+      .single();
+  
+    if (error) return alert(error.message);
+  
+    alert("Order created — proceed to payment");
+  
+    return data;
+  };
+  

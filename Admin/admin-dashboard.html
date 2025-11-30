@@ -1,0 +1,32 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/components/styles/global.css">
+  <link rel="stylesheet" href="/components/styles/admin.css">
+  <script type="module" src="admin-dashboard.js"></script>
+</head>
+
+<body>
+
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => (document.getElementById("navbar").innerHTML = html));
+</script>
+
+<div class="container">
+  <h1>Admin Dashboard</h1>
+
+  <div id="admin-grid" class="admin-grid"></div>
+</div>
+
+</body>
+</html>

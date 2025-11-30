@@ -1,0 +1,33 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Swift Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="dashboard.js"></script>
+</head>
+
+<body>
+    <div id="admin-container">
+
+        <h1>Swift Admin Dashboard</h1>
+        <p id="admin-email-display"></p>
+
+        <div class="tabs">
+            <button class="tab-btn" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="sellers">Sellers</button>
+            <button class="tab-btn" data-tab="payouts">Payout Requests</button>
+            <button class="tab-btn" data-tab="revenue">Revenue</button>
+        </div>
+
+        <div id="tab-content"></div>
+
+    </div>
+</body>
+</html>

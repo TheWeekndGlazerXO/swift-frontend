@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Review Products</title>
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    body { font-family: Arial; padding: 20px; }
+
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 15px;
+      background: #fafafa;
+      border-radius: 8px;
+      width: 350px;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 8px 15px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .approve-btn {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .reject-btn {
+      background: #d9534f;
+      color: white;
+    }
+
+    #pending-count {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  </style>
+
+  <script type="module" src="./review-products.js"></script>
+</head>
+
+<body>
+  <h1>Review Pending Products</h1>
+
+  <p id="pending-count"></p>
+
+  <div id="pending-products"></div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<input id="name" placeholder="Name"><br>
+<input id="description" placeholder="Description"><br>
+<input id="price" type="number" placeholder="Price"><br>
+<label>Brand</label>
+<select id="brand"></select>
+
+<select id="category"></select><br>
+
+<button onclick="addProduct()">Save</button>

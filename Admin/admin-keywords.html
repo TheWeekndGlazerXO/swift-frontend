@@ -1,0 +1,40 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<div id="navbar"></div>
+<script>
+  fetch("../components/admin-navbar.html")
+    .then(res => res.text())
+    .then(html => (document.getElementById("navbar").innerHTML = html));
+</script>
+
+<h1>Search Insights</h1>
+<table id="kw"></table>
+<script type="module" src="admin-keywords.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Statistics</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script type="module" src="admin-keywords.js"></script>
+</head>
+
+<body>
+  <h1>Search Keywords</h1>
+
+  <table class="admin-table">
+    <thead>
+      <tr>
+        <th>Keyword</th>
+        <th>Times Searched</th>
+      </tr>
+    </thead>
+    <tbody id="kw-table"></tbody>
+  </table>
+
+</body>
+</html>

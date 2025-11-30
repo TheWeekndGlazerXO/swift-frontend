@@ -1,0 +1,30 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Categories</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="categories.js"></script>
+</head>
+
+<body>
+
+<header>Categories</header>
+
+<div class="grid" id="category-list"></div>
+
+<div class="bottom-nav">
+  <a href="index.html">🏠<br>Home</a>
+  <a class="active">📦<br>Categories</a>
+  <a href="cart.html">🛒<br>Cart</a>
+  <a href="profile.html">👤<br>Profile</a>
+</div>
+
+</body>
+</html>

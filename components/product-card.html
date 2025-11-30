@@ -1,0 +1,18 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<div class="product-card">
+    <img src="{{image}}" class="product-img">
+  
+    <h3>{{name}}</h3>
+    <p class="price">K{{price}}</p>
+  
+    <button onclick="window.location.href='product.html?id={{id}}'">
+      View
+    </button>
+  </div>
+  

@@ -1,0 +1,17 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<h1>Your Products</h1>
+<div id="seller-products"></div>
+<h1>Swift Admin Dashboard</h1>
+<div id="user-stats"></div>
+<div id="sales-stats"></div>
+<div id="best-sellers"></div>
+<div id="search-stats"></div>
+<div id="visit-stats"></div>
+
+<button onclick="openAddProduct()">Add Product</button>

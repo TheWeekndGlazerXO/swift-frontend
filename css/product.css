@@ -1,0 +1,11 @@
+.product-container {
+    display: flex;
+    padding: 60px;
+    gap: 60px;
+  }
+  
+  #mainImg {
+    width: 380px;
+    border-radius: var(--radius);
+  }
+  

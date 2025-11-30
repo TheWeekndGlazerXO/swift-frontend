@@ -1,0 +1,43 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seller Dashboard</title>
+  <link rel="stylesheet" href="/components/styles/global.css">
+  <link rel="stylesheet" href="/components/styles/seller.css">
+  <script type="module" src="seller-dashboard.js"></script>
+</head>
+
+<body>
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => (document.getElementById("navbar").innerHTML = html));
+</script>
+
+<div class="container seller-container">
+
+  <div class="seller-menu">
+    <h3>Your Shop</h3>
+    <a href="add-product.html">Add Product</a>
+    <a href="seller-products.html">Manage Products</a>
+    <a href="seller-orders.html">Orders</a>
+    <a href="seller-payouts.html">Payouts</a>
+  </div>
+
+  <div class="dashboard-main">
+    <h2>Welcome, Seller!</h2>
+    <p>Your overview will appear here.</p>
+  </div>
+
+</div>
+</body>
+</html>
+<h2>Rejected Products</h2>
+<div id="rejected-products"></div>

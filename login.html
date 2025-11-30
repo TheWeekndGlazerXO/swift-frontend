@@ -1,3 +1,10 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
 <!DOCTYPE html>
 <html>
 <head>

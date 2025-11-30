@@ -30,3 +30,27 @@ window.uploadProduct = async function () {
   if (error) return alert(error.message);
   alert('Product uploaded');
 };
+await supabase.from("profiles").upsert({
+    id: user.id,
+    full_name: "",
+    role: "seller"
+  });
+  
+
+  const role = document.getElementById("role").value;
+
+  await supabase.from("profiles").upsert({
+    id: user.id,
+    full_name: "",
+    role: role
+  });
+
+  if (role === "seller") {
+    await supabase.from("seller_profiles").insert({
+      id: user.id,
+      business_name: "",
+      contact_number: "",
+      verified: false
+    });
+  }
+  

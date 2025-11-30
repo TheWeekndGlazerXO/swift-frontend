@@ -1,0 +1,22 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seller Store</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script type="module" src="seller-page.js"></script>
+</head>
+
+<body>
+  <div id="seller-info"></div>
+
+  <h2>Products</h2>
+  <div id="products" class="grid"></div>
+</body>
+</html>

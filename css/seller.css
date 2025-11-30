@@ -1,0 +1,26 @@
+.seller-container {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 20px;
+  }
+  
+  .seller-menu {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    height: fit-content;
+  }
+  
+  .seller-menu a {
+    display: block;
+    padding: 10px 0;
+    font-weight: 500;
+    color: black;
+  }
+  
+  .dashboard-main {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+  }
+  

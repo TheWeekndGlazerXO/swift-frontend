@@ -1,0 +1,25 @@
+.search-container {
+    display: flex;
+  }
+  
+  .filters {
+    width: 250px;
+    padding: 20px;
+    background: white;
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    height: fit-content;
+    margin: 20px;
+  }
+  
+  .results {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+  }
+  

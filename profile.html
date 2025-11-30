@@ -1,0 +1,54 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Profile</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="profile.js"></script>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" style="text-decoration:none; font-size:22px;">←</a>
+  Profile
+</header>
+
+<div style="padding: 20px;">
+
+  <div id="profile-info" style="
+    background:white; 
+    padding:20px;
+    border-radius:20px;
+  ">
+    <h2 id="email"></h2>
+    <p id="role"></p>
+  </div>
+
+  <button id="logout-btn" style="
+    margin-top:25px;
+    width:100%;
+    padding:15px;
+    background:black;
+    color:white;
+    border-radius:12px;
+    font-size:18px;
+  ">Log Out</button>
+
+</div>
+
+<div class="bottom-nav">
+  <a href="index.html">🏠<br>Home</a>
+  <a href="categories.html">📦<br>Categories</a>
+  <a href="cart.html">🛒<br>Cart</a>
+  <a href="profile.html" class="active">👤<br>Profile</a>
+</div>
+
+</body>
+</html>

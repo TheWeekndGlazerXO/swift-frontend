@@ -1,0 +1,14 @@
+<div id="navbar"></div>
+<script>
+  fetch("../components/admin-navbar.html")
+    .then(res => res.text())
+    .then(html => (document.getElementById("navbar").innerHTML = html));
+</script>
+
+<div id="navbar"></div>
+<script src="navbar.js"></script>
+
+<h1>Top Sellers</h1>
+<table id="top-sellers"></table>
+
+<script type="module" src="admin-top-sellers.js"></script>

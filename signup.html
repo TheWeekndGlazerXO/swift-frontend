@@ -1,3 +1,10 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,3 +21,8 @@
   <button onclick="signup()">Sign Up</button>
 </body>
 </html>
+<select id="role">
+    <option value="buyer">Buyer</option>
+    <option value="seller">Seller</option>
+  </select>
+  

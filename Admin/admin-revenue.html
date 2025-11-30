@@ -1,0 +1,22 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Revenue Analytics</title>
+  <link rel="stylesheet" href="../styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="admin-revenue.js"></script>
+</head>
+
+<body>
+  <h1>Swift Revenue Analytics</h1>
+
+  <canvas id="revGraph"></canvas>
+</body>
+</html>

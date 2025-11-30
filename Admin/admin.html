@@ -1,0 +1,25 @@
+<div id="navbar"></div>
+<script>
+  fetch("../components/admin-navbar.html")
+    .then(res => res.text())
+    .then(html => (document.getElementById("navbar").innerHTML = html));
+</script>
+
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <script type="module" src="admin.js"></script>
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+  <div id="order-list"></div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<nav class="seller-nav">
+    <a href="seller-dashboard.html">Overview</a>
+    <a href="seller-products.html">Products</a>
+    <a href="add-product.html">Add Product</a>
+    <a href="seller-orders.html">Orders</a>
+    <a href="seller-boosts.html">Boosts</a>
+    <a href="seller-payouts.html">Payouts</a>
+  </nav>
+  

@@ -1,0 +1,17 @@
+<div id="navbar"></div>
+<script>
+  fetch("../components/admin-navbar.html")
+    .then(res => res.text())
+    .then(html => (document.getElementById("navbar").innerHTML = html));
+</script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Appeals</title>
+  <script type="module" src="./appeals.js"></script>
+</head>
+<body>
+  <h1>Product Appeals</h1>
+  <div id="appeals"></div>
+</body>
+</html>

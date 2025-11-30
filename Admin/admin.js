@@ -1,4 +1,4 @@
-import { supabase } from "./config.js";
+import { supabase } from "../config.js";
 
 /* LOAD ALL ORDERS */
 async function loadOrdersAdmin() {

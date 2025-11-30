@@ -1,0 +1,49 @@
+<div id="navbar"></div>
+<script>
+  fetch("../components/admin-navbar.html")
+    .then(res => res.text())
+    .then(html => (document.getElementById("navbar").innerHTML = html));
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin — Sellers</title>
+  <link rel="stylesheet" href="../styles/admin.css" />
+  <script type="module" src="admin-sellers.js"></script>
+</head>
+
+<body>
+
+  <!-- LEFT SIDEBAR -->
+  <div class="sidebar">
+      <h2>SWIFT ADMIN</h2>
+
+      <a href="admin-dashboard.html">📊 Overview</a>
+      <a class="active" href="admin-sellers.html">🏪 Sellers</a>
+      <a href="admin-orders.html">🛒 Orders</a>
+      <a href="admin-search.html">🔍 Search Keywords</a>
+      <a href="admin-payouts.html">💵 Payout Requests</a>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div class="content">
+      <h1>Sellers</h1>
+
+      <table class="analytics-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Tier</th>
+            <th>Products</th>
+            <th>Total Sales (K)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="sellers"></tbody>
+      </table>
+  </div>
+
+</body>
+</html>

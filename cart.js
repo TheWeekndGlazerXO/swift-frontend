@@ -1,26 +1,60 @@
 import { supabase } from "./config.js";
-import { cart, clearCart } from "./cart.js";
 
-window.checkout = async function () {
+window.loadCart = async function () {
   const user = (await supabase.auth.getUser()).data.user;
-  if (!user) return alert('Login first');
+  if (!user) return alert("Please log in first");
 
-  const total = cart.reduce((s,i)=> s + Number(i.price)*i.qty || 1, 0);
+  const { data: cart } = await supabase
+    .from("cart")
+    .select("*, products(*)")
+    .eq("user_id", user.id);
 
-  const { data: order, error: ordErr } = await supabase.from('orders').insert({
-    user_id: user.id,
-    total,
-    shipping_address: { /* collect from form */ }
-  }).select().single();
+  const list = document.getElementById("cart-items");
 
-  if (ordErr) return alert(ordErr.message);
+  if (!cart || cart.length === 0) {
+    list.innerHTML = "<p>Your cart is empty.</p>";
+    document.getElementById("total-price").innerText = "Total: ZMW 0";
+    return;
+  }
 
-  const items = cart.map(i => ({ order_id: order.id, product_id: i.id, quantity: i.qty || 1, price: i.price }));
-  const { error: itErr } = await supabase.from('order_items').insert(items);
-  if (itErr) return alert(itErr.message);
+  let total = 0;
 
-  // notify seller(s) - simple SMS via Edge Function or Africa's Talking
-  clearCart();
-  alert('Order placed');
-  window.location.href = 'orders.html';
+  list.innerHTML = cart
+    .map(item => {
+      total += item.products.price;
+
+      return `
+        <div style="
+          background:white; 
+          padding:15px; 
+          border-radius:12px; 
+          margin-bottom:15px;
+          display:flex; 
+          gap:15px;
+        ">
+          <img src="${item.products.image_url}" style="
+            width:100px;
+            height:100px;
+            object-fit:cover;
+            border-radius:10px;
+          "/>
+
+          <div style="flex:1;">
+            <h3>${item.products.name}</h3>
+            <p style="opacity:0.7;">ZMW ${item.products.price}</p>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  document.getElementById("total-price").innerText =
+    "Total: ZMW " + total;
 };
+
+window.checkout = function () {
+  window.location.href = "checkout.html";
+};
+
+document.addEventListener("DOMContentLoaded", loadCart);
+document.getElementById("checkout-btn").onclick = checkout;

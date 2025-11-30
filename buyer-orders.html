@@ -1,0 +1,18 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Orders</title>
+  <script type="module" src="buyer-orders.js"></script>
+</head>
+<body>
+  <h1>My Orders</h1>
+  <div id="orders"></div>
+</body>
+</html>

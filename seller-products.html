@@ -1,0 +1,30 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seller Products</title>
+  <link rel="stylesheet" href="../styles/seller.css">
+  <script type="module" src="seller-products.js"></script>
+</head>
+
+<body>
+  <div id="seller-nav"></div>
+  <script>
+    fetch("/components/seller-nav.html")
+      .then(r => r.text())
+      .then(html => document.getElementById("seller-nav").innerHTML = html);
+  </script>
+
+  <section class="page">
+    <h2>Your Products</h2>
+    <div id="product-list" class="grid"></div>
+  </section>
+
+</body>
+</html>

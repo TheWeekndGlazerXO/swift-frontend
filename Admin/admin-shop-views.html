@@ -1,0 +1,14 @@
+<div id="navbar"></div>
+<script>
+  fetch("../components/admin-navbar.html")
+    .then(res => res.text())
+    .then(html => (document.getElementById("navbar").innerHTML = html));
+</script>
+
+<div id="navbar"></div>
+<script src="navbar.js"></script>
+
+<h1>Most Viewed Shops</h1>
+<table id="shop-views"></table>
+
+<script type="module" src="admin-shop-views.js"></script>

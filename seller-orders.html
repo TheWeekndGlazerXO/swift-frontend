@@ -1,0 +1,49 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seller Orders</title>
+  <script type="module" src="seller-orders.js"></script>
+</head>
+<body>
+  <h1>Orders for My Products</h1>
+  <div id="orders"></div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seller Orders</title>
+  <link rel="stylesheet" href="../styles/seller.css">
+  <script type="module" src="seller-orders.js"></script>
+</head>
+
+<body>
+  <div id="seller-nav"></div>
+  <script>
+    fetch("/components/seller-nav.html")
+      .then(r => r.text())
+      .then(html => document.getElementById("seller-nav").innerHTML = html);
+  </script>
+
+  <section class="page">
+    <h2>Incoming Orders</h2>
+
+    <div id="orders" class="orders-grid"></div>
+  </section>
+
+</body>
+</html>

@@ -121,23 +121,69 @@ async function loadOrders() {
       .join("");
   }
   
-  /* CHECKOUT */
   window.checkout = async function () {
     const user = (await supabase.auth.getUser()).data.user;
     if (!user) return alert("Log in first.");
   
-    for (const item of cart) {
-      await supabase.from("orders").insert({
-        user_id: user.id,
-        product_id: item.id,
-        status: "pending",
-      });
+    // Calculate total amount
+    let total_price = cart.reduce((sum, item) => sum + item.price, 0);
+  
+    // 1️⃣ CREATE PAYMENT SESSION THROUGH YOUR BACKEND
+    const res = await fetch("https://swift-payments-backend.onrender.com/create-payment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: user.email,
+        amount: total_price,
+      }),
+    });
+  
+    const data = await res.json();
+  
+    if (!data || !data.data || !data.data.authorization_url) {
+      console.error(data);
+      alert("Failed to start payment. Check console.");
+      return;
     }
   
-    clearCart();
-    alert("Order placed!");
-    window.location.href = "orders.html";
+    // 2️⃣ REDIRECT USER TO PAYSTACK CHECKOUT
+    window.location.href = data.data.authorization_url;
   };
+  // 1. Create an order BEFORE redirecting to payment
+const { data: orderData, error: orderErr } = await supabase
+.from("orders")
+.insert({
+  user_id: user.id,
+  amount: total_price,
+  status: "pending"
+})
+.select()
+.single();
+
+if (orderErr) {
+alert("Could not create order");
+return;
+}
+
+const order_id = orderData.id;
+// 2. Call your Render backend to create payment
+const res = await fetch("https://swift-payments-backend.onrender.com/create-payment", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    order_id: order_id,
+    amount: total_price,
+    email: user.email
+  })
+});
+
+const data = await res.json();
+// 3. If payment link is returned → redirect
+if (data.data.authorization_url) {
+  window.location.href = data.data.authorization_url;
+} else {
+  alert("Payment error.");
+}
+
   
-  loadCart();
   

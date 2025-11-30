@@ -1,0 +1,52 @@
+
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Boost Product</title>
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/seller.css" />
+</head>
+
+<body>
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<section class="card" style="max-width: 600px; margin: 40px auto;">
+  <h2>Boost Your Product</h2>
+
+  <p style="color:#555">Increase your visibility, reach more buyers and make more sales.</p>
+
+  <!-- Product select -->
+  <label class="label">Select Product</label>
+  <select id="productSelect" class="input"></select>
+
+  <!-- Boost type -->
+  <label class="label">Choose Boost Type</label>
+  <select id="boostType" class="input">
+    <option value="premium" data-price="50">Premium Listing — K50 (7 days)</option>
+    <option value="super" data-price="200">Super Boost — K200 (30 days)</option>
+  </select>
+
+  <!-- Price display -->
+  <div class="boost-price-box">
+    <h3>Total: <span id="boostPrice">K50</span></h3>
+  </div>
+
+  <button class="btn" onclick="buyBoost()">Buy Boost</button>
+</section>
+
+<script type="module" src="boost.js"></script>
+
+</body>
+</html>

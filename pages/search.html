@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/search.css">
+
+<div id="navbar"></div>
+
+<div class="search-container">
+  <aside class="filters">
+    <h3>Filter</h3>
+    <label>Brand</label>
+    <select id="brandFilter"></select>
+
+    <label>Category</label>
+    <select id="categoryFilter"></select>
+
+    <label>Price</label>
+    <input type="range" id="priceRange" min="0" max="5000">
+  </aside>
+
+  <div class="results">
+    <input id="searchInput" placeholder="Search products…" />
+    <div id="productList" class="grid"></div>
+  </div>
+</div>
+
+<script src="search.js"></script>

@@ -1,0 +1,12 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
+<!DOCTYPE html><html><head><title>Subscriptions</title><script type="module" src="subscriptions.js"></script></head><body>
+    <h1>Subscriptions</h1>
+    <div id="plans"></div>
+    </body></html>
+    

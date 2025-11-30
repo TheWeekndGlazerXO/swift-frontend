@@ -1,0 +1,46 @@
+
+<div id="navbar"></div>
+<script>
+  fetch("../components/admin-navbar.html")
+    .then(res => res.text())
+    .then(html => (document.getElementById("navbar").innerHTML = html));
+</script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin — Search Analytics</title>
+  <link rel="stylesheet" href="../styles/admin.css" />
+  <script type="module" src="admin-search.js"></script>
+</head>
+
+<body>
+
+  <div class="sidebar">
+      <h2>SWIFT ADMIN</h2>
+
+      <a href="admin-dashboard.html">📊 Overview</a>
+      <a href="admin-sellers.html">🏪 Sellers</a>
+      <a href="admin-orders.html">🛒 Orders</a>
+      <a class="active" href="admin-search.html">🔍 Search Keywords</a>
+      <a href="admin-payouts.html">💵 Payout Requests</a>
+  </div>
+
+  <div class="content">
+      <h1>Search Analytics</h1>
+
+      <button id="reset-btn">Reset Keywords</button>
+
+      <table class="analytics-table">
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Search Count</th>
+          </tr>
+        </thead>
+        <tbody id="keywords"></tbody>
+      </table>
+  </div>
+
+</body>
+</html>

@@ -1,13 +1,52 @@
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("navbar").innerHTML = html);
+</script>
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Your Cart</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <link rel="stylesheet" href="styles.css">
   <script type="module" src="cart.js"></script>
 </head>
+
 <body>
-  <h1>Your Cart</h1>
+
+<header>
+  <a href="index.html" style="text-decoration:none; font-size:22px;">←</a>
+  Your Cart
+</header>
+
+<div id="cart-container" style="padding: 20px;">
+
   <div id="cart-items"></div>
-  <button onclick="checkout()">Checkout</button>
+
+  <h2 id="total-price" style="margin-top:20px; font-size:24px;"></h2>
+
+  <button id="checkout-btn" style="
+    margin-top:25px;
+    width:100%;
+    padding:15px;
+    background:black;
+    color:white;
+    border-radius:12px;
+    font-size:18px;
+  ">
+    Checkout
+  </button>
+
+</div>
+
+<!-- Bottom nav -->
+<div class="bottom-nav">
+  <a href="index.html">🏠<br>Home</a>
+  <a href="categories.html">📦<br>Categories</a>
+  <a href="cart.html" class="active">🛒<br>Cart</a>
+  <a href="profile.html">👤<br>Profile</a>
+</div>
+
 </body>
 </html>
